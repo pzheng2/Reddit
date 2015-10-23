@@ -2,6 +2,16 @@
 
 <%= flash[:errors] %>
 
+<ul>
+  <% if @posts %>
+    <% @posts.each do |post| %>
+      <li>
+        <a href="<%= post_url(post) %>"><%= post.title %></a>
+      </li>
+    <% end %>
+  <% end %>
+</ul>
+
 <% if logged_in? %>
   <% if current_user.subs.include?(@sub) %>
     <a href="<%= edit_sub_url(@sub) %>">Edit</a>

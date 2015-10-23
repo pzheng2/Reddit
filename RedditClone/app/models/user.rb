@@ -8,6 +8,12 @@ class User < ActiveRecord::Base
   attr_reader :password
 
   has_many(
+    :posts,
+    through: :subs,
+    source: :posts
+  )
+
+  has_many(
     :subs,
     class_name: "Sub",
     foreign_key: :moderator_id,

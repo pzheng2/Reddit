@@ -1,0 +1,38 @@
+<h1> Create Post </h1>
+
+<%= flash[:errors] %>
+
+<form action="<%= posts_url %>" method="POST">
+  <input type="hidden"
+         name="authenticity_token"
+         value="<%= form_authenticity_token %>">
+
+  <label>Title
+    <input type="text" name="post[title]" value="<%= @post.title %>">
+  </label>
+
+  <label>Url
+    <input type="text" name="post[url]" value="<%= @post.url %>">
+  </label>
+
+  <label>Content
+    <input type="text" name="post[content]" value="<%= @post.content %>">
+  </label>
+
+  <label>Sub
+  <select name="post[sub_id]">
+      <% @subs.each do |sub| %>
+          <option
+              <%= "selected" if @post.sub_id == sub.id %>
+              value="<%= sub.id %>">
+              <%= sub.title %>
+          </option>
+      <% end %>
+  </select>
+</label>
+<br>
+
+ <p></p>
+
+  <button>Create Post</button>
+</form>

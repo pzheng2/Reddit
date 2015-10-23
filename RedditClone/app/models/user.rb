@@ -7,6 +7,13 @@ class User < ActiveRecord::Base
 
   attr_reader :password
 
+  has_many(
+    :subs,
+    class_name: "Sub",
+    foreign_key: :moderator_id,
+    primary_key: :id
+  )
+
   def self.generate_session_token
     SecureRandom.base64(16)
   end

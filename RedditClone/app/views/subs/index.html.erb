@@ -1,0 +1,19 @@
+<h1> Reddit </h1>
+<ul>
+  <% if @subs %>
+    <% @subs.each do |sub| %>
+      <li>
+        <a href="<%= sub_url(sub) %>"><%= sub.title %></a>
+      </li>
+    <% end %>
+  <% end %>
+</ul>
+
+<p>
+<% if logged_in? %>
+  <a href="<%= new_sub_url %>">Create Sub</a>
+<% else %>
+  <a href="<%= new_session_url %>">Log in</a>
+  <a href="<%= new_user_url %>">Create User</a>
+<% end %>
+</p>

@@ -1,0 +1,13 @@
+<h1><%= @sub.title %></h1>
+
+<%= flash[:errors] %>
+
+<% if logged_in? %>
+  <% if current_user.subs.include?(@sub) %>
+    <a href="<%= edit_sub_url(@sub) %>">Edit</a>
+  <% end %>
+<% end %>
+
+<p>
+<a href="<%= subs_url %>">All Subs</a>
+</p>

@@ -2,11 +2,20 @@
 <html>
 <head>
   <title>RedditClone</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
 </head>
 <body>
+
+  <% if current_user %>
+    <form method="POST" action="<%= session_url %>">
+      <input type="hidden"
+             name="authenticity_token"
+             value="<%= form_authenticity_token %>">
+      <input type="hidden"
+             name="_method"
+             value="delete">
+      <button>Log out</button>
+    </form>
+  <% end %>
 
 <%= yield %>
 
